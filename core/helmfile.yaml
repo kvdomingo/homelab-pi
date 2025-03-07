@@ -1,6 +1,8 @@
 repositories:
   - name: metrics-server
     url: https://kubernetes-sigs.github.io/metrics-server/
+  - name: coredns
+    url: https://coredns.github.io/helm/
 
 releases:
   - name: metrics-server
@@ -8,3 +10,8 @@ releases:
     chart: metrics-server/metrics-server
     version: 3.12.2
     values: [ metrics-server.yaml ]
+  - name: coredns
+    namespace: kube-system
+    chart: coredns/coredns
+    version: 1.39.1
+    values: [ coredns.yaml ]
