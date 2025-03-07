@@ -7,6 +7,8 @@ repositories:
     url: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
   - name: reflector
     url: https://emberstack.github.io/helm-charts
+  - name: jetstack
+    url: https://charts.jetstack.io
 
 releases:
   - name: metrics-server
@@ -29,3 +31,8 @@ releases:
     chart: reflector/reflector
     version: 9.0.318
     values: [ reflector.yaml ]
+  - name: cert-manager
+    namespace: kube-system
+    chart: jetstack/cert-manager
+    version: v1.17.1
+    values: [ cert-manager.yaml ]
