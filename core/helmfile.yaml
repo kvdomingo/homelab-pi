@@ -9,6 +9,11 @@ repositories:
     url: https://emberstack.github.io/helm-charts
   - name: jetstack
     url: https://charts.jetstack.io
+  - name: traefik
+    url: https://traefik.github.io/charts
+
+helmfiles:
+  - crds-helmfile.yaml
 
 releases:
   - name: metrics-server
@@ -36,3 +41,8 @@ releases:
     chart: jetstack/cert-manager
     version: v1.17.1
     values: [ cert-manager.yaml ]
+  - name: traefik
+    namespace: kube-system
+    chart: traefik/traefik
+    version: 34.4.1
+    values: [ traefik.yaml ]

@@ -1,0 +1,9 @@
+repositories:
+  - name: traefik
+    url: https://traefik.github.io/charts
+
+releases:
+  - name: traefik-crds
+    namespace: kube-system
+    chart: traefik/traefik-crds
+    version: 1.5.0
