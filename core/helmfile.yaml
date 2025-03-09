@@ -5,12 +5,16 @@ repositories:
     url: https://coredns.github.io/helm/
   - name: nfs-subdir-external-provisioner
     url: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+  - name: secrets-store-csi-driver
+    url: https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
   - name: reflector
     url: https://emberstack.github.io/helm-charts
   - name: jetstack
     url: https://charts.jetstack.io
   - name: traefik
     url: https://traefik.github.io/charts
+  - name: hashicorp
+    url: https://helm.releases.hashicorp.com
 
 helmfiles:
   - crds-helmfile.yaml
@@ -31,6 +35,11 @@ releases:
     chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
     version: 4.0.18
     values: [ nfs-storage-provisioner.yaml ]
+  - name: secrets-store-csi-driver
+    namespace: kube-system
+    chart: secrets-store-csi-driver/secrets-store-csi-driver
+    version: 1.4.8
+    values: [ secrets-store-csi-driver.yaml ]
   - name: reflector
     namespace: kube-system
     chart: reflector/reflector
@@ -46,3 +55,8 @@ releases:
     chart: traefik/traefik
     version: 34.4.1
     values: [ traefik.yaml ]
+  # - name: vault
+  #   namespace: vault
+  #   chart: hashicorp/vault
+  #   version: 0.29.1
+  #   values: [ vault.yaml ]
