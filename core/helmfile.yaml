@@ -15,6 +15,8 @@ repositories:
     url: https://traefik.github.io/charts
   - name: hashicorp
     url: https://helm.releases.hashicorp.com
+  - name: infisical
+    url: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
 
 helmfiles:
   - crds-helmfile.yaml
@@ -35,11 +37,11 @@ releases:
     chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
     version: 4.0.18
     values: [ nfs-storage-provisioner.yaml ]
-  - name: secrets-store-csi-driver
-    namespace: kube-system
-    chart: secrets-store-csi-driver/secrets-store-csi-driver
-    version: 1.4.8
-    values: [ secrets-store-csi-driver.yaml ]
+  # - name: secrets-store-csi-driver
+  #   namespace: kube-system
+  #   chart: secrets-store-csi-driver/secrets-store-csi-driver
+  #   version: 1.4.8
+  #   values: [ secrets-store-csi-driver.yaml ]
   - name: reflector
     namespace: kube-system
     chart: reflector/reflector
@@ -55,6 +57,11 @@ releases:
     chart: traefik/traefik
     version: 34.4.1
     values: [ traefik.yaml ]
+  - name: infisical
+    namespace: infisical
+    chart: infisical/infisical-standalone
+    version: 1.4.0
+    values: [ infisical.yaml ]
   # - name: vault
   #   namespace: vault
   #   chart: hashicorp/vault
